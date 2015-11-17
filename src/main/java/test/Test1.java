@@ -4,9 +4,10 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-import org.junit.Test;
 
-import com.sun.org.apache.xerces.internal.xs.XSTerm;
+
+
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -17,10 +18,11 @@ import net.sf.json.JSONObject;
 import util.NetWork;
 import util.NetWorkFile;
 import util.WeChartConvert;
-import web.WeiXin;
-
+//import web.WeiXin;
+import org.junit.Test;
 public class Test1 {
 	public static final String ACCESS_TOKEN="vTy_QCm-8OO36PCZFud1eaDzAAXiSUzblDQmy_0bF-mQ9knC8lowPJFSF61vS1B7LU_CrimoRgA-vTJM1jZEn8uhr3zqMTwO_VBfiCB2kF0PFIiAIAUKN";
+
 
 	@Test
 	public void testAddSuCai() {
@@ -51,21 +53,21 @@ public class Test1 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-	
-		
+
+
+
+
+
 	}
-	
-	
+
+
 	@Test
 	public void testSuCaiShu()
 	{
 		NetWork work=new NetWork();
 		String sucai="https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token="+ACCESS_TOKEN+"";
 		String responseText=work.sendByPost(sucai);
-		System.out.println(responseText);		
+		System.out.println(responseText);
 	}
 	@Test
 	public void testHuoquyonghuxinxi()
@@ -74,7 +76,7 @@ public class Test1 {
 		String url="https://api.weixin.qq.com/cgi-bin/user/info?access_token="+ACCESS_TOKEN+"&openid="+openId+"&lang=zh_CN";
 		NetWork work=new NetWork();
 		String json=work.sendByPost(url);
-		System.out.println(json);				
+		System.out.println(json);
 	}
 	@Test
 	public void userlist()
@@ -82,7 +84,7 @@ public class Test1 {
 		String url="https://api.weixin.qq.com/cgi-bin/user/get?access_token="+ACCESS_TOKEN;
 		NetWork work=new NetWork();
 		String json=work.sendByPost(url);
-		
+
 		JSONObject obj=JSONObject.fromObject(json);
 		JSONObject data=(JSONObject)obj.get("data") ;
 		JSONArray array=(JSONArray)(data.get("openid"));
@@ -91,7 +93,7 @@ public class Test1 {
 			System.out.println(object);
 		}
 	}
-		
+
 		@Test
 		public void sendMsg()
 		{
@@ -107,17 +109,17 @@ public class Test1 {
 			System.out.println(obj);
 			String response=work.sendByPost(urlString,obj);
 			System.out.println(response);
-						
-			
-			
-	
-		
-						
 
-		
+
+
+
+
+
+
+
 	}
-	
-	
-	
-	
+
+
+
+
 }
