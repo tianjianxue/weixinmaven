@@ -94,18 +94,20 @@ public class NetWorkFile {
 		String path=conn.getHeaderField("Content-disposition");
 		String contentType=conn.getHeaderField("Content-Type");
 		String suffix=".meilele";
-		if(path!=null)
-			suffix=path.substring(path.lastIndexOf(".") ,path.length()-1);
 		if(contentType!=null)
 		{
+			System.out.println(contentType);
 			switch (contentType)
 			{
 				case "image/jpg":
-					suffix=".meilele";
+					suffix=".jpg";
 				break;
+				case "application/json; charset=UTF-8":
+					suffix=".json";break;
 			}
-
 		}
+		if(path!=null)
+			suffix=path.substring(path.lastIndexOf(".") ,path.length()-1);
 		FileOutputStream out=new FileOutputStream(localFile+suffix);
 		byte bt[]=new byte[1024];
 		int length=0;
@@ -133,8 +135,8 @@ public class NetWorkFile {
 		conn.setDoOutput(true);
 		conn.setUseCaches(false);
 		conn.setConnectTimeout(10000); // 连接超时为10秒
-		conn.setRequestMethod("POST");
-		conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+		conn.setRequestMethod("GET");
+		//conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 	}
 
 	// 普通字符串数据
