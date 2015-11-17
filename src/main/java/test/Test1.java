@@ -1,27 +1,23 @@
 package test;
 
 import java.io.File;
-import java.lang.reflect.Field;
-import java.util.Map;
+import java.nio.channels.NetworkChannel;
 
-
-
-
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
+import com.sun.org.apache.xpath.internal.SourceTree;
+import entity.LinkEntity;
+import entity.LocationEventEntity;
+import entity.MessageEntity;
 import entity.TextEntity;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import util.NetWork;
 import util.NetWorkFile;
-import util.WeChartConvert;
-//import web.WeiXin;
+
 import org.junit.Test;
+import util.WeChartConvert;
+
 public class Test1 {
-	public static final String ACCESS_TOKEN="vTy_QCm-8OO36PCZFud1eaDzAAXiSUzblDQmy_0bF-mQ9knC8lowPJFSF61vS1B7LU_CrimoRgA-vTJM1jZEn8uhr3zqMTwO_VBfiCB2kF0PFIiAIAUKN";
+	public static final String ACCESS_TOKEN="TDlc-m3BsdIt2Cfwu6tuqE5AgTYztzpxQr5z_yN_Iso2Q7oM9msoqwGWWlZDSl-TQuIZ_KmeTXTxixrncso7f3zPMu9Z8Wj1RtJw9tv9YlEMMVgABASSB";
 
 
 	@Test
@@ -109,13 +105,32 @@ public class Test1 {
 			System.out.println(obj);
 			String response=work.sendByPost(urlString,obj);
 			System.out.println(response);
+	}
 
+	@Test
+	public void testQC_image()
+	{
+		String url="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token="+ACCESS_TOKEN;
+		NetWork work=new NetWork();
+		//{"expire_seconds": 604800, "action_name": "QR_SCENE", "action_info": {"scene": {"scene_id": 123}}}
+		JSONObject jsonobj=new JSONObject();
+		jsonobj.element("expire_seconds","604800");
+		jsonobj.element("action_name","QR_SCENE");
+		jsonobj.element("scene","{\"scene\": {\"scene_id\": 123}}");
+		String responsetext=work.sendByGet(url,jsonobj);
+		System.out.println(responsetext);
 
-
-
-
-
-
+	}
+	@Test
+	public void testTrans()
+	{
+		MessageEntity tx=new MessageEntity();
+		LinkEntity t2=new LinkEntity();
+		t2.setTitle("ddddddddddd");
+		t2.setFromUserName("wuwenjie");
+		String xml=WeChartConvert.transObjecttoXml(t2);
+		System.out.println("用户名"+t2.getFromUserName());
+		System.out.println(xml);
 
 	}
 

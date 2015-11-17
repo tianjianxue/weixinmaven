@@ -25,5 +25,8 @@
         <module name="weixinmaven" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="weixinmaven" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

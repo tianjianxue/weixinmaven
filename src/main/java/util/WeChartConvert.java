@@ -14,7 +14,6 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import entity.MessageEntity;
-import entity.TextEntity;
 
 
 public class WeChartConvert {

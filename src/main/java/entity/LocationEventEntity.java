@@ -1,35 +1,40 @@
 package entity;
 
 public class LocationEventEntity extends EventEntity{
-	private String Latitude;
-	private String Longitude;
-	private String Precision;
-	
-	public String getLatitude() {
-		return Latitude;
-	}
-	public void setLatitude(String latitude) {
-		Latitude = latitude;
-	}
-	public String getLongitude() {
-		return Longitude;
-	}
-	public void setLongitude(String longitude) {
-		Longitude = longitude;
-	}
-	public String getPrecision() {
-		return Precision;
-	}
-	public void setPrecision(String precision) {
-		Precision = precision;
-	}
+	private String latitude;
+	private String longitude;
+	private String precision;
+
 	@Override
 	public String toString() {
-		return "LocationEventEntity [Latitude=" + Latitude + ", Longitude=" + Longitude + ", Precision=" + Precision
-				+ "] ==> super"+super.toString();
+		return "LocationEventEntity{" +
+				"latitude='" + latitude + '\'' +
+				", longitude='" + longitude + '\'' +
+				", precision='" + precision + '\'' +
+				'}'+super.toString();
 	}
-	
-	
-	
 
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getPrecision() {
+		return precision;
+	}
+
+	public void setPrecision(String precision) {
+		this.precision = precision;
+	}
 }
