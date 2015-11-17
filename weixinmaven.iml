@@ -19,5 +19,6 @@
         <jarDirectory url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>
