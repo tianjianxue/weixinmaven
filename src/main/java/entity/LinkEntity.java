@@ -1,6 +1,6 @@
 package entity;
 /**
- * ¶ÔÓ¦ÍşĞÅ¹ıÀ´µÄÎÄ±¾ÏûÏ¢
+ * å¯¹åº”å¨ä¿¡è¿‡æ¥çš„æ–‡æœ¬æ¶ˆæ¯
  * @author Administrator
  *
  */
@@ -32,6 +32,6 @@ public class LinkEntity extends MessageEntity {
 	public void setUrl(String url) {
 		Url = url;
 	}
-	
+
 
 }

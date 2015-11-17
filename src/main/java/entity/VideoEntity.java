@@ -1,6 +1,6 @@
 package entity;
 /**
- * ¶ÔÓ¦ÍþÐÅ¹ýÀ´µÄÎÄ±¾ÏûÏ¢
+ * å¯¹åº”å¨ä¿¡è¿‡æ¥çš„æ–‡æœ¬æ¶ˆæ¯
  * @author Administrator
  *
  */
@@ -24,6 +24,6 @@ public class VideoEntity extends MessageEntity {
 		return "VideoEntity [MediaId=" + MediaId + ", ThumbMediaId=" + ThumbMediaId + "]-->super==>"+super.toString();
 	}
 
-	
+
 
 }

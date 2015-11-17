@@ -1,6 +1,6 @@
 package entity;
 /**
- * ¶ÔÓ¦ÍşĞÅ¹ıÀ´µÄÎÄ±¾ÏûÏ¢
+ * å¯¹åº”å¨ä¿¡è¿‡æ¥çš„æ–‡æœ¬æ¶ˆæ¯
  * @author Administrator
  *
  */
@@ -15,7 +15,7 @@ public class LocationEntity extends MessageEntity {
 	private String Location_Y;
 	private String Scale;
 	private String Label;
-	
+
 	public String getLocation_X() {
 		return Location_X;
 	}

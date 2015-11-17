@@ -166,7 +166,6 @@ public class WeiXin extends HttpServlet {
 			case "event":				
 				doEvent(out,xml);				
 				break;
-				
 			}
 		} else {
 			System.out.println("bad url");

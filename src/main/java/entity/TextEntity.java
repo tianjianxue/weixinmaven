@@ -1,6 +1,6 @@
 package entity;
 /**
- * ¶ÔÓ¦ÍþÐÅ¹ýÀ´µÄÎÄ±¾ÏûÏ¢
+ * å¯¹åº”å¨ä¿¡è¿‡æ¥çš„æ–‡æœ¬æ¶ˆæ¯
  * @author Administrator
  *
  */
@@ -16,16 +16,16 @@ public class TextEntity extends MessageEntity {
 	public void setContent(String content) {
 		Content = content;
 	}
-	
-	
+
+
 
 	@Override
 	public String toString() {
-		
+
 		return "TextEntity [Content=" + Content + "] Supe==>"+super.toString();
 	}
 
-	
-	
+
+
 
 }
