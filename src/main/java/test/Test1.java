@@ -119,20 +119,22 @@ public class Test1 {
 		jsonobj.element("scene","{\"scene\": {\"scene_id\": 123}}");
 		String responsetext=work.sendByGet(url,jsonobj);
 		System.out.println(responsetext);
+		JSONObject ticket=JSONObject.fromObject(responsetext);
+
+		String t=ticket.getString("ticket");
+		String erweima="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+t;
+		NetWorkFile f= null;
+		try {
+			f = new NetWorkFile(erweima);
+			f.downLoad("D:/file");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+
 
 	}
-	@Test
-	public void testTrans()
-	{
-		MessageEntity tx=new MessageEntity();
-		LinkEntity t2=new LinkEntity();
-		t2.setTitle("ddddddddddd");
-		t2.setFromUserName("wuwenjie");
-		String xml=WeChartConvert.transObjecttoXml(t2);
-		System.out.println("用户名"+t2.getFromUserName());
-		System.out.println(xml);
 
-	}
 
 
 

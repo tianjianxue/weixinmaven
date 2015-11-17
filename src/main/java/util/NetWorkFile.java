@@ -92,9 +92,20 @@ public class NetWorkFile {
 		}		
 		InputStream in = conn.getInputStream();
 		String path=conn.getHeaderField("Content-disposition");
+		String contentType=conn.getHeaderField("Content-Type");
 		String suffix=".meilele";
 		if(path!=null)
-			suffix=path.substring(path.lastIndexOf(".") ,path.length()-1);		
+			suffix=path.substring(path.lastIndexOf(".") ,path.length()-1);
+		if(contentType!=null)
+		{
+			switch (contentType)
+			{
+				case "image/jpg":
+					suffix=".meilele";
+				break;
+			}
+
+		}
 		FileOutputStream out=new FileOutputStream(localFile+suffix);
 		byte bt[]=new byte[1024];
 		int length=0;
