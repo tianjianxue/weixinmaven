@@ -2,6 +2,7 @@ package test;
 
 import java.io.File;
 
+import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import util.NetWork;
@@ -110,7 +111,7 @@ public class Test1 {
 		JSONObject jsonobj=new JSONObject();
 		jsonobj.element("expire_seconds","604800");
 		jsonobj.element("action_name","QR_SCENE");
-		jsonobj.element("scene","{\"scene\": {\"scene_id\": 123}}");
+		jsonobj.element("scene","{'scene': {'scene_id': 123}}");
 		String responsetext=work.sendByGet(url,jsonobj);
 		System.out.println(responsetext);
 		JSONObject ticket=JSONObject.fromObject(responsetext);
@@ -134,6 +135,92 @@ public class Test1 {
 		String s=WeChartConvert.getAccess_token();
 		System.out.println(s);
 	}
+
+    @Test
+    public void shangchuanlogo()
+    {
+        String url="http://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token="+ACCESS_TOKEN+"&type=image";
+        NetWorkFile net= null;
+        try {
+            net = new NetWorkFile(url);
+            File f=new File("D://meilelelogo.jpg");
+            net.addFileParameter("image",f);
+
+            byte[] by=net.send();
+            String json=new String(by);
+            System.out.print(json);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void haohao()
+    {
+        try {
+            NetWorkFile w=new NetWorkFile("http://mmbiz.qpic.cn/mmbiz/iaL1LJM1mF9aRKPZJkmG8xXhiaHqkKSVMMWeN3hLut7X7hicFNjakmxibMLGWpXrEXB33367o7zHN0CwngnQY7zb7g/0");
+            w.downLoad("D:/imgs");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //测试用来创建卡卷
+    @Test
+    public void chuangjiankajuan()
+    {
+        String url="https://api.weixin.qq.com/card/create?access_token="+ACCESS_TOKEN;
+        NetWork net=new NetWork();
+        String baseinfo="{ " +
+                "'card': {" +
+                "   'card_type': 'GROUPON'," +
+                "   'groupon': {" +
+                "       'base_info': {" +
+                "           'logo_url': " +
+                "'http://mmbiz.qpic.cn/mmbi/fAuxd9pbs034VS1gLDLo9AIX6a4ARRWSRBPHSKyj4mI8GiasVIsMaicicjnjovficM34vphWD338gWHgSiaNEn9Zbgw/0'," +
+                "           'brand_name':'海底捞'," +
+                "           'code_type':'CODE_TYPE_TEXT'," +
+                "           'title': '132元双人火锅套餐'," +
+                "           'sub_title': '周末狂欢必备'," +
+                "           'color': 'Color010'," +
+                "           'notice': '使用时向服务员出示此券'," +
+                "           'service_phone': '020-88888888'," +
+                "           'description': '不可与其他优惠同享\\如需团购券发票,请在消费时向商户提出\\店内均可使用,仅限堂食'," +
+                "           'date_info': {" +
+                "               'type': 'DATE_TYPE_FIX_TIME_RANGE'," +
+                "               'begin_timestamp': 1397577600 ," +
+                "               'end_timestamp': 1422724261" +
+                "           }," +
+                "           'sku': {" +
+                "               'quantity': 500000" +
+                "           }," +
+                "           'get_limit': 3," +
+                "           'use_custom_code': false," +
+                "           'bind_openid': false," +
+                "           'can_share': true," +
+                "         'can_give_friend': true," +
+                "           'location_id_list' : [123, 12321, 345345]," +
+                "           'center_title':'顶部居中按钮'," +
+                "           'center_sub_title':'按钮下方的wording'," +
+                "           'center_url':'www.qq.com'," +
+                "           'custom_url_name': '立即使用'," +
+                "           'custom_url': 'http://www.qq.com'," +
+                "           'custom_url_sub_title': '6个汉字tips'," +
+                "           'promotion_url_name': '更多优惠'," +
+                "         'promotion_url': 'http://www.qq.com'," +
+                "           'source': '大众点评'   " +
+                "       }," +
+                "       'deal_detail': '以下锅底2选1（有菌王锅、麻辣锅、大骨锅、番茄锅、清补凉锅、酸菜鱼锅可选）:\\大锅1份 12元\\小锅2份 16元 '}" +
+                " }" +
+                "}";
+
+        JSONObject jsonobj= JSONObject.fromObject(baseinfo);
+
+        String response=net.sendByPost(url,jsonobj);
+        System.out.print(response);
+
+
+    }
 
 
 

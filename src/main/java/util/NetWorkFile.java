@@ -107,6 +107,8 @@ public class NetWorkFile {
 					suffix=".json";break;
 				case "text/plain":
 					suffix=".json";break;
+				case "image/jpeg":
+					suffix=".jpg";break;
 			}
 		}
 		if(path!=null)
