@@ -83,6 +83,8 @@ public class NetWorkFile {
 	
 	public long downLoad(String localFile) throws Exception {
 		initConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		try {
 			conn.connect();
 			
@@ -100,9 +102,10 @@ public class NetWorkFile {
 			switch (contentType)
 			{
 				case "image/jpg":
-					suffix=".jpg";
-				break;
+					suffix=".jpg";break;
 				case "application/json; charset=UTF-8":
+					suffix=".json";break;
+				case "text/plain":
 					suffix=".json";break;
 			}
 		}
@@ -135,8 +138,8 @@ public class NetWorkFile {
 		conn.setDoOutput(true);
 		conn.setUseCaches(false);
 		conn.setConnectTimeout(10000); // 连接超时为10秒
-		conn.setRequestMethod("GET");
-		//conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
 	}
 
 	// 普通字符串数据

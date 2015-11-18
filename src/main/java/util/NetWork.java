@@ -19,14 +19,18 @@ public class NetWork {
 	   public  String sendByPost(String urlString,JSONObject json) {
 		   return sendHttp(urlString, "POST",json); 
 	    }
-	   public String  sendByPost(String urlString) {
-		   return sendHttp(urlString, "POST",null);
+	   public JSONObject  sendByPost(String urlString) {
+		   String json=sendHttp(urlString, "POST",null);
+		   JSONObject obj=JSONObject.fromObject(json);
+		   return obj;
 	   }
 	   public  String sendByGet(String urlString,JSONObject json) {
 		   return sendHttp(urlString, "GET",json); 
 	    }
-	   public String  sendByGet(String urlString) {
-		   return sendHttp(urlString, "GET",null);
+	   public JSONObject  sendByGet(String urlString) {
+		   String jsonstring=sendHttp(urlString, "GET",null);
+		   JSONObject obj=JSONObject.fromObject(jsonstring);
+		   return obj;
 	   }
 	   	   
 	   private String sendHttp(String urlString,String method,JSONObject json) {
@@ -87,15 +91,13 @@ public class NetWork {
     	data.element("text",  "{'content':'中文'}" );
     	
     	NetWork work=new NetWork();
-    	String responseText=work.sendByPost(sucai);
-    	System.out.println(responseText);
+
     }
 
 	public String getOath2(String code)
 	{
 		String url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxbc0d6ff65d0f13b3&secret=c3f3cc1e2f76715bd9a7f0b27f0791d2&code="+code+"&grant_type=authorization_code";
-		return sendByPost(url);
-
+		return sendByPost(url).toString();
 	}
   
 } 
