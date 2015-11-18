@@ -100,7 +100,9 @@ public class WeiXin extends HttpServlet {
 		 */
 		if (checkSing(request)) {
 			String xml = getXml(request); // 接收到微信服务器发送过来的xml数据
+			System.out.println("--------------------------------------------------------");
 			System.out.println(xml);
+			System.out.println("--------------------------------------------------------");
 			String type = WeChartConvert.getElementText(xml, "MsgType"); // 接受用户发送过来的消息类型
 			MessageEntity jieshouxinxi = null;
 			switch (type) {
