@@ -1,13 +1,7 @@
 package test;
 
 import java.io.File;
-import java.nio.channels.NetworkChannel;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-import entity.LinkEntity;
-import entity.LocationEventEntity;
-import entity.MessageEntity;
-import entity.TextEntity;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import util.NetWork;
@@ -17,16 +11,18 @@ import org.junit.Test;
 import util.WeChartConvert;
 
 public class Test1 {
-	public static final String ACCESS_TOKEN="TDlc-m3BsdIt2Cfwu6tuqE5AgTYztzpxQr5z_yN_Iso2Q7oM9msoqwGWWlZDSl-TQuIZ_KmeTXTxixrncso7f3zPMu9Z8Wj1RtJw9tv9YlEMMVgABASSB";
+	public static final String ACCESS_TOKEN=WeChartConvert.getAccess_token();
+	//public static final String ACCESS_TOKEN="DuhTaIty-wSl8SWJWagpNPQNUdTxYhzyD--YSnO8O2WoIkIC8fvL-bHLSSfs61AKdKoDbRMSdsryVxVyptphA2A62BjIiMWIMn1GRie75EsMHCeAEAHCX";
 
 
 	@Test
 	public void testAddSuCai() {
 		NetWorkFile u;
+		System.out.println(ACCESS_TOKEN);
 		try {
 			u = new NetWorkFile(
 					"https://api.weixin.qq.com/cgi-bin/media/upload?access_token="+ACCESS_TOKEN+"&type=voice");
-			u.addFileParameter("voice", new File("F:/KuGou/xiaohuangren.mp3"));
+			u.addFileParameter("voice", new File("F:/KuGou/Go.mp3"));
 			byte[] b = u.send();
 			String result = new String(b);
 			System.out.println(result);
@@ -38,7 +34,7 @@ public class Test1 {
 	@Test
 	public void huoqusucai()
 	{
-		String meiid="QC1iZU8_4brwxmNjQGpdPflq28a1QZssbHbyogdDJZZO10Xp-Aw-5DU-ogZVqiSv";
+		String meiid="y8TDx0x6C83pal-9YEe-6Ji1F_WTtOsPeLZD2yEmuB4ygU-8PYG6_hAR8kkIBb0Z";
 		String sucai="https://api.weixin.qq.com/cgi-bin/media/get?access_token="+ACCESS_TOKEN+"&media_id="+meiid;
 		NetWorkFile f;
 		try {
@@ -61,8 +57,8 @@ public class Test1 {
 	public void testSuCaiShu()
 	{
 		NetWork work=new NetWork();
-		String sucai="https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token="+ACCESS_TOKEN+"";
-		String responseText=work.sendByPost(sucai);
+		String sucai="https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token="+ACCESS_TOKEN;
+		JSONObject responseText=work.sendByPost(sucai);
 		System.out.println(responseText);
 	}
 	@Test
@@ -71,7 +67,7 @@ public class Test1 {
 		String openId="olR-Kt9YUBxx0klj-suYhCuURcZw";
 		String url="https://api.weixin.qq.com/cgi-bin/user/info?access_token="+ACCESS_TOKEN+"&openid="+openId+"&lang=zh_CN";
 		NetWork work=new NetWork();
-		String json=work.sendByPost(url);
+		JSONObject json=work.sendByPost(url);
 		System.out.println(json);
 	}
 	@Test
@@ -79,9 +75,7 @@ public class Test1 {
 	{
 		String url="https://api.weixin.qq.com/cgi-bin/user/get?access_token="+ACCESS_TOKEN;
 		NetWork work=new NetWork();
-		String json=work.sendByPost(url);
-
-		JSONObject obj=JSONObject.fromObject(json);
+		JSONObject obj=work.sendByPost(url);
 		JSONObject data=(JSONObject)obj.get("data") ;
 		JSONArray array=(JSONArray)(data.get("openid"));
 		System.out.println(array.size());
@@ -133,6 +127,12 @@ public class Test1 {
 
 
 
+	}
+	@Test
+	public  void showaccess()
+	{
+		String s=WeChartConvert.getAccess_token();
+		System.out.println(s);
 	}
 
 
