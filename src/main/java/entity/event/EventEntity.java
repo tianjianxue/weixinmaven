@@ -1,8 +1,10 @@
-package entity;
+package entity.event;
+
+import entity.MessageEntity;
 
 public class EventEntity extends MessageEntity {
 	private String Event;
-		
+
 	public String getEvent() {
 		return Event;
 	}

@@ -18,25 +18,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entity.*;
+import entity.event.ClickAndViewEventEntity;
+import entity.event.EventEntity;
+import entity.event.QRCodeEventEntity;
 import util.Decript;
 import util.WeChartConvert;
-
-
-
-import entity.ClickAndViewEventEntity;
-import entity.EventEntity;
-import entity.ImageAndTextEntity;
-import entity.ImageEntity;
-import entity.ItemEntity;
-import entity.LinkEntity;
-import entity.LocationEntity;
-import entity.MessageEntity;
-
-import entity.ReplayVoiceEntity;
-import entity.ReplayVoiceMediaEntity;
-import entity.TextEntity;
-import entity.VideoEntity;
-import entity.VoiceEntity;
 
 /**
  * Servlet implementation class WeiXin
@@ -214,9 +201,15 @@ public class WeiXin extends HttpServlet {
 				break;		
 			}	
 			break;
-		case "VIEW":
-			System.out.println("用户"+openID+"刚刚跳转了页面");
-			break;						
+			case "VIEW":
+				System.out.println("用户"+openID+"刚刚跳转了页面");
+			break;
+			case "SCAN":
+				event = WeChartConvert.transxmltoObject(xml, QRCodeEventEntity.class);
+				QRCodeEventEntity qe=(QRCodeEventEntity)event;
+				System.out.println("用户刚刚扫描了唯码，所属场景值"+qe.getEventKey());
+				replayTxt("您是通过场景"+qe.getEventKey()+"来的",event,out);
+			break;
 		}
 		
 		

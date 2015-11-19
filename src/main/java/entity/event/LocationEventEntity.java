@@ -1,6 +1,8 @@
-package entity;
+package entity.event;
 
-public class LocationEventEntity extends EventEntity{
+import entity.event.EventEntity;
+
+public class LocationEventEntity extends EventEntity {
 	private String latitude;
 	private String longitude;
 	private String precision;

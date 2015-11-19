@@ -1,9 +1,9 @@
-package entity;
+package entity.event;
 
-public class ClickAndViewEventEntity  extends EventEntity{
+public class ClickAndViewEventEntity  extends EventEntity {
 	
 	private String EventKey;
-	
+
 	public String getEventKey() {
 		return EventKey;
 	}
