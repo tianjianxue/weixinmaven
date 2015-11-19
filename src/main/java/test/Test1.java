@@ -165,6 +165,42 @@ public class Test1 {
         }
     }
 
+	@Test
+	public void benjidizhi()
+	{
+		try {
+			String pa=String.class.getResource("/").getFile()+"file.properties";
+			System.out.println(pa.substring(1));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	//产生二维码
+	@Test
+	public void chanshengerweima()
+	{
+		int changjin=2;
+		String url="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token="+ACCESS_TOKEN;
+		NetWork net=new NetWork();
+		String jsonstr="{\"expire_seconds\": 604800, \"action_name\": \"QR_SCENE\", \"action_info\": {\"scene\": {\"scene_id\": "+changjin+"}}}";
+		JSONObject jsonobj=JSONObject.fromObject(jsonstr);
+		String responseText= net.sendByPost(url,jsonobj);
+		JSONObject resp=JSONObject.fromObject(responseText);
+		String tick=resp.getString("ticket");
+		System.out.println("场景:"+changjin+"的二维码图片地址"+resp.getString("url"));
+		NetWorkFile f= null;
+		try {
+			f = new NetWorkFile("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket="+tick);
+			f.downLoad("D:/"+changjin);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
     //测试用来创建卡卷
     @Test
     public void chuangjiankajuan()

@@ -30,7 +30,8 @@ public class WeChartConvert {
 		{
 			try {
 				pro=new Properties();
-				FileInputStream input=new FileInputStream("E:\\Intellitestproject\\weixinmaven\\src\\main\\java\\util\\file.properties");
+				String pa=String.class.getResource("/").getFile()+"file.properties";
+				FileInputStream input=new FileInputStream(pa);
 				pro.load(input);
 				input.close();
 			} catch (IOException e) {
